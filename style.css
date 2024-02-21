@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*, html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    height: 100px;
+    width: 360px;
+    margin-top: 20px; /* Adjusted margin for better positioning */
+    position: absolute;
+    display: inline;
+}
+
+.container {
+    width: 50vw;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "login";
+    box-shadow: 0 0 17px 10px rgb(0 0 0 / 30%);
+    border-radius: 20px;
+    background: white;
+    overflow: hidden;
+    margin-top: 70px;
+    position: relative; /* Added relative position for absolute positioning inside container */
+}
+
+.slf {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    margin-top: -360px;
+}
+
+.design {
+    grid-area: design;
+    display: none;
+    position: relative;
+    background-color: #6a6868;
+}
+
+.rotate-45 {
+    transform: rotate(-45deg);
+}
+
+.login {
+    grid-area: login;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: white;
+}
+
+/* Add a wrapper for better styling */
+.form-wrapper {
+    width: 100%;
+}
+
+.login h3.title {
+    margin: 15px 0;
+}
+
+/* Adjusted styling for better consistency */
+.text-input,
+#select-design {
+    background: #e6e6e6;
+    height: 40px;
+    width: 80%; /* Adjusted width for better responsiveness */
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 15px;
+    margin: 5px 0;
+}
+
+.text-input input,
+#select-design {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.text-input i {
+    color: #686868;
+}
+
+/* Adjusted styling for better responsiveness */
+.login-btn {
+    width: 80%;
+    padding: 10px;
+    color: white;
+    background-color: #5a82c7;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background-color: blue;
+}
+
+a {
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+}
+
+a.forgot {
+    margin-top: 15px;
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+}
+
+.create i {
+    color: #9a9a9a;
+    margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 50% 50%;
+        grid-template-areas: "design login";
+    }
+
+    .design {
+        display: block;
+    }
+
+    /* Adjusted margin for better positioning on larger screens */
+    .logo {
+        margin-top: 170px;
+    }
+
+    /* Adjusted margin for better positioning on larger screens */
+    .container {
+        margin-top: 92px;
+    }
+}

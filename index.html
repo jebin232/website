@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Laboratory Foyer</title>
+    <link rel="icon" href="fxec logo.png" type="images/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logout.css">
+
+
+    <style>
+        form {
+            width: '-webkit-fill-available';
+            margin-top: 92px;
+        }
+        form {
+            width: '-webkit-fill-available';
+            margin-top: 92px;
+        }
+
+        /* Styling for the loader */
+        #loader {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+        <div class="design">
+            <img class="logo" src="fx.png" alt="logo">
+        </div>
+        <form id="submit-form" action="">
+            <div id="login-section" class="login">
+                <img class="slf" src="slf logo.png" alt="logo">
+                <h3 class="title">Students Laboratory Foyer</h3>
+                <div class="text-input">
+                    <i class="ri-user-fill"></i>
+                    <input type="text" name="name" placeholder="Enter your Name" required autocomplete="off">
+                </div>
+                <div class="text-input">
+                    <i class="ri-pencil-fill"></i>
+                    <input type="number" name="Register Number" required placeholder="Register Number">
+                </div>
+                <div class="text-input">
+                    <i class="ri-computer-fill"></i>
+                    <input type="text" name="system number" required placeholder="System Number or Laptop" autocomplete="off">
+                </div>
+                <div class="text-input">
+                    <select id="select-design" name="Lab">
+                        <option>Choose Lab</option>
+                        <option value="Research Lab">Research Lab</option>
+                        <option value="OS Lab">OS Lab</option>
+                        <option value="Network Lab">Network Lab</option>
+                    </select>
+                </div>
+                <button type="button" class="login-btn" onclick="login()">LOGIN</button>
+            </div>
+
+            <div id="logout-section" class="logout" style="display: none;">
+                <img class="slf" src="slf logo.png" alt="logo">
+                <h3 class="title">Students Laboratory Foyer</h3>
+                <p>Your attendance has been successfully recorded.!<br>
+                    Keep the tab open until the lab is finished.<br>
+                    Each person may only use one computer at a time.
+                    <br> Never exit the page without logging out.
+                </p>
+                <!-- Add hidden fields for login and logout times -->
+                <input type="hidden" name="login_time" id="login_time" value="">
+                <input type="hidden" name="logout_time" id="logout_time" value="">
+
+                <button type="button" class="logout-btn" onclick="logout()">LOGOUT</button>
+            </div>
+        </form>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function login() {
+                // Set login time before displaying the logout section
+
+                document.getElementById("login_time").value = getCurrentTime();
+                
+                // Toggle visibility of login and logout sections
+                $("#login-section").hide();
+                $("#logout-section").show();
+            }
+
+            function logout() {
+                // Set logout time before form submission
+                document.getElementById("logout_time").value = getCurrentTime();
+                document.getElementById("loader").style.display = "block";
+
+
+                // Submit the form using AJAX
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbzF771DHRfwo3FEBqhvL63sjzNyzooNvrI1JFUUot6nO55NY_L_mhC8bWK2estxc4Si/exec",
+                    data: $("#submit-form").serialize(),
+                    method: "post",
+                    success: function (response) {
+                        alert("Form submitted successfully");
+                        // Optionally, redirect to another page
+                        window.location.href = "index.html";
+                    },
+                    error: function (err) {
+                        alert("Something Error");
+                    }
+                });
+            }
+
+            // Helper function to get current time in HH:mm:ss format
+            function getCurrentTime() {
+                const now = new Date();
+                return now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+            }
+        </script>
+    </div>
+
+</body>
+
+</html>

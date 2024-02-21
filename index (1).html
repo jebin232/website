@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Laboratory Foyer</title>
+    <link rel="icon" href="fxec logo.png" type="images/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        form{
+            width: '-webkit-fill-available';
+            margin-top: 92px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="design">
+            <img class="logo" src="fx.png" alt="logo">
+        </div>
+        <form id="submit-form" action="">
+
+        <div class="login">
+            <img class="slf" src="slf logo.png" alt="logo">
+            <h3 class="title">Students Laboratory Foyer</h3>
+            <div class="text-input">
+                <i class="ri-user-fill"></i>
+                <input type="text" name="name" placeholder="Enter your Name" required autocomplete="off">
+            </div>
+            <div class="text-input">
+                <i class="ri-pencil-fill"></i>
+                <input type="number" name="Register Number" required placeholder="Register Number">
+            </div>
+            <div class="text-input">
+                <i class="ri-computer-fill"></i>
+                <input type="text" name="system number" required placeholder="System Number or Laptop" autocomplete="off">
+            </div>
+            <div class="text-input">
+                <select  id="select-design" name="Lab">
+                    <option>Choose Lab</option>
+                    <option value="Research Lab">Research Lab</option>
+                    <option value="OS Lab">OS Lab</option>
+                    <option value="Network Lab">Network Lab</option>
+                </select>
+            </div>
+            <button type="submit" value="Submit" class="login-btn" ><a href="logout.html" target="_blank">SUBMIT</a></button>
+        <script>
+           $("#submit-form").submit((e)=>{
+                e.preventDefault()
+                $.ajax({
+                   url:"https://script.google.com/macros/s/AKfycbzF771DHRfwo3FEBqhvL63sjzNyzooNvrI1JFUUot6nO55NY_L_mhC8bWK2estxc4Si/exec",
+                    data:$("#submit-form").serialize(),
+                    method:"post",
+                    success:function (response){
+                        // alert("Form submitted successfully")
+                     //   window.location.reload()
+                        window.location.href="logout.html"
+                    },
+                    error:function (err){
+                        alert("Something Error")
+        
+                    }
+                })
+            })  
+        </script>
+        </div>
+    </form>
+
+    </div>
+   
+</body>
+
+</html>
